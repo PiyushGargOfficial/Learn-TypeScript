@@ -76,3 +76,61 @@ function addNum(x: number, y: number): number{
 function log(message: string | number): void {
     console.log(message)
 }
+
+//Interfaces
+    //same as type
+    //type can be used in Unions but not interface
+interface UserInterface {
+    //Read only properties
+    readonly id: number,
+    name: string
+    //optional properties
+    age?:number
+}
+
+const user1: UserInterface= {
+id: 1,
+name: "Piyush"
+}
+
+//interfaces with Function
+interface MathFunc {
+    (x: number, y: number): number
+}
+
+const add: MathFunc = (x:number, y: number): number => {
+    return x+ y;
+}
+
+//Classes
+    //Class Modifiers: private, public and protected
+class Person{
+    id: number
+    name: string
+    
+    constructor(id: number, name: string){
+        this.id = id
+        this.name = name
+    }
+}
+
+const piyush = new Person(1, "Piyush")
+
+//Subclasses
+class Employee extends Person {
+    position: string
+
+    constructor(id: number, name: string, position: string){
+        super(id,name)
+        this.position = position
+    }
+}
+
+//Generics: Reusable Components
+function getArray<T>(items: T[]): T[]{
+    return new Array().concat(items)
+}
+
+let numArray = getArray<number>([1,2,3,4]);
+let strArray = getArray<string>(['brad', 'piyush', 'mike'])
+
